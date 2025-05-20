@@ -1,0 +1,281 @@
+/* Reset general y box sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body y html para pantalla completa sin scroll innecesario */
+html, body, #root {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #343a40, #1a1f24);
+  color: #eee;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor principal que ocupa toda la pantalla */
+.app-container {
+  background: rgba(255 255 255 / 0.10);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 24px;
+  max-width: 900px;
+  width: 90vw;
+  height: 90vh;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título principal grande y estilizado */
+h1 {
+  font-weight: 800;
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow:
+    0 0 5px #ffea00,
+    0 0 10px #ffcc00,
+    0 0 20px #ff9900;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Formulario con layout responsive */
+.movie-form {
+  background: rgba(255 255 255 / 0.15);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Inputs y selects estilo moderno */
+input, select {
+  flex: 1 1 150px;
+  min-width: 150px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #ffd700;
+  background: rgba(255 255 255 / 0.15);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow:
+    inset 2px 2px 5px rgba(255 255 255 / 0.3),
+    inset -2px -2px 5px rgba(0 0 0 / 0.15);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+input::placeholder {
+  color: #fff9d9;
+  font-weight: 400;
+}
+
+input:focus, select:focus {
+  border-color: #ffb700;
+  box-shadow:
+    0 0 12px #ffca2c,
+    inset 2px 2px 6px rgba(255 255 255 / 0.5),
+    inset -2px -2px 6px rgba(0 0 0 / 0.3);
+  outline: none;
+  color: white;
+}
+
+/* Botones grandes con sombra y efecto hover */
+button {
+  background: linear-gradient(135deg, #ffc700, #ff8f00);
+  color: #212529;
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: none;
+  box-shadow:
+    0 6px 12px rgba(255, 199, 0, 0.8);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  user-select: none;
+  flex: 1 1 150px;
+  min-width: 150px;
+}
+
+button:hover, button:focus {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 20px rgba(255, 180, 0, 1),
+    0 4px 12px rgba(255, 180, 0, 0.7);
+  outline: none;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #b20000, #ff4500);
+  color: white;
+  box-shadow:
+    0 6px 12px rgba(178, 0, 0, 0.8);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background: linear-gradient(135deg, #ff3300, #ff6347);
+  box-shadow:
+    0 10px 20px rgba(255, 60, 20, 1),
+    0 4px 12px rgba(255, 60, 20, 0.7);
+}
+
+/* Lista de películas estilo grid */
+.movie-list {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 28px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Tarjetas de película decoradas */
+.movie-card {
+  background: rgba(255 255 255 / 0.10);
+  border-radius: 20px;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(255, 215, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  color: #ffd700;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 14px 40px rgba(255, 215, 0, 0.9),
+    inset 0 0 25px rgba(255, 215, 0, 0.4);
+  z-index: 10;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: drop-shadow(0 0 10px #ffd700bb);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: filter 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+  filter: drop-shadow(0 0 20px #fff06fdd);
+}
+
+.movie-info {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  text-shadow: 0 0 6px #000000cc;
+}
+
+.movie-title {
+  font-weight: 900;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  color: #fff8b0;
+}
+
+.movie-year {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #ffd700cc;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+}
+
+/* Controles búsqueda y orden */
+.search-sort-container {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Scrollbar para movie-list */
+.movie-list::-webkit-scrollbar {
+  width: 8px;
+}
+.movie-list::-webkit-scrollbar-thumb {
+  background: #ffd700bb;
+  border-radius: 10px;
+}
+.movie-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-sort-container input[type="search"] {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #ffd700cc;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  background-color: #fff8b0;
+  min-width: 160px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-sort-container input::placeholder {
+  color: #b3a341;
+}
+
+.search-sort-container input:focus {
+  outline: none;
+  border-color: #fff06f;
+  box-shadow: 0 0 10px #fff06fdd;
+  color: #222;
+}
+
+@media (max-width: 650px) {
+  .app-container {
+    width: 95vw;
+    height: 95vh;
+    padding: 20px 20px;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 18px;
+  }
+
+  button, input, select {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .movie-form {
+    gap: 12px;
+  }
+
+  .search-sort-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
